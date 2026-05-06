@@ -7,4 +7,9 @@ export default defineConfig({
   server: {
     port: 6003,
   },
+  preview: {
+    host: '127.0.0.1',
+    port: 6003,
+    allowedHosts: ['project.ramcoad.com'],
+  },
 })
