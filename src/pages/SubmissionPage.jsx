@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, ArrowRight, Upload, CheckCircle, ShieldCheck, Loader2, AlertCircle, FileText } from 'lucide-react';
+import { API_ENDPOINTS } from '../config/api.js';
 
 const SubmissionPage = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const SubmissionPage = () => {
     Object.keys(files).forEach(key => { if (files[key]) submitData.append(key, files[key]); });
 
     try {
-      await axios.post('http://localhost:6002/api/submissions', submitData, { headers: { 'Content-Type': 'multipart/form-data' } });
+      await axios.post(API_ENDPOINTS.SUBMISSIONS, submitData, { headers: { 'Content-Type': 'multipart/form-data' } });
       setSuccess(true);
       showToast('Project submitted successfully!', 'success');
     } catch (err) {

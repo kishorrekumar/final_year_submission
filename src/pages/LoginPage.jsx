@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ShieldCheck, Lock, Mail, ArrowRight, Loader2 } from 'lucide-react';
+import { API_ENDPOINTS } from '../config/api.js';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:6002/api/login', {
+      const response = await axios.post(API_ENDPOINTS.LOGIN, {
         email,
         password,
       });

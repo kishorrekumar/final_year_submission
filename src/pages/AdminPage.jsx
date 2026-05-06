@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ShieldCheck, LogOut, LayoutDashboard, FileText, CheckCircle, Clock, Loader2 } from 'lucide-react';
+import { API_ENDPOINTS } from '../config/api.js';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const AdminPage = () => {
 
   const fetchSubmissions = async () => {
     try {
-      const response = await axios.get('http://localhost:6002/api/submissions');
+      const response = await axios.get(API_ENDPOINTS.SUBMISSIONS);
       setSubmissions(response.data);
     } catch (error) {
       console.error('Error fetching submissions:', error);
